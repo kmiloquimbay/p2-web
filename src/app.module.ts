@@ -3,6 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TokenModule } from './token/token.module';
+import { CharacterModule } from './character/character.module';
+import { LocationModule } from './location/location.module';
 
 @Module({
   imports: [
@@ -17,7 +20,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       autoLoadEntities: true,
       synchronize: false,
       ssl: process.env.STAGE==='prod'?true: false,
-    })
+    }),
+    TokenModule,
+    CharacterModule,
+    LocationModule
   ],
   controllers: [AppController],
   providers: [AppService],
