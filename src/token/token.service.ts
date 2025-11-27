@@ -26,7 +26,7 @@ export class TokenService {
       });
       
       await this.tokenRepository.save(token);
-      return tokenValue;
+      return token;
     } catch (error) {
       throw new Error('Error creando token: ' + error.message);
     }

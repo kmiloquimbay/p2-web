@@ -49,6 +49,7 @@ export class CharacterService {
     try {
       const character = await this.characterRepository.findOne({
         where: { id },
+        relations: ['property'], // Agregar relación para obtener la propiedad
       });
       if (!character) {
         throw new Error('Character no encontrado');

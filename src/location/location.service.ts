@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Location } from './entities/location.entity';
 import { In, Repository } from 'typeorm';
 import { Character } from 'src/character/entities/character.entity';
+import { TokenService } from 'src/token/token.service';
 
 @Injectable()
 export class LocationService {
@@ -43,7 +44,7 @@ export class LocationService {
       const locations = await this.locationRepository.find({ relations: ['favCharacters'] });
       return locations;
     } catch (error) {
-      
+      throw new Error('Error obteniendo locations: ' + error.message);
     }
   }
 }

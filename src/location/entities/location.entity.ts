@@ -20,6 +20,4 @@ export class Location {
 
     @ManyToMany(() => Character, character => character.favPlaces)
     favCharacters: Character[];
-
-
 }
