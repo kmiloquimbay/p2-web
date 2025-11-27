@@ -15,11 +15,16 @@ export class TokenService {
 
   async create(createTokenDto: CreateTokenDto) {
     try {
-      const token = createTokenDto;
       let tokenValue = 'dcqv-' + Math.random().toString(36).substring(2, 15); // Es dcqv por mis iniciales jaja
       while (await this.tokenRepository.findOneBy({ token: tokenValue })) {
         tokenValue = 'dcqv-' + Math.random().toString(36).substring(2, 15); // Por si se repite aleatoriamente
       }
+      
+      const token = this.tokenRepository.create({
+        ...createTokenDto,
+        token: tokenValue
+      });
+      
       await this.tokenRepository.save(token);
       return tokenValue;
     } catch (error) {

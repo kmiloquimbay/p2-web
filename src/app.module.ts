@@ -18,7 +18,7 @@ import { LocationModule } from './location/location.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       autoLoadEntities: true,
-      synchronize: false,
+      synchronize: true, // Enable auto-synchronization for development
       ssl: process.env.STAGE==='prod'?true: false,
     }),
     TokenModule,

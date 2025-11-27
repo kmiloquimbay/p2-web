@@ -9,7 +9,7 @@ export class Token {
     @Column({ unique: true })
     token: string;
 
-    @Column()
+    @Column({ default: true })
     active: boolean;
 
     @Column({ default: 10 })
